@@ -11,4 +11,4 @@ COPY app.py .
 EXPOSE 5000
 
 # Run Flask app using gunicorn
-CMD ["conda", "run", "-n", "base", "gunicorn", "--bind", "0.0.0.0:$PORT", "--workers", "2", "app:app"]
+CMD ["bash", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 2 app:app"]
